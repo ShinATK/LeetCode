@@ -13,6 +13,34 @@
 
 ### 深度优先遍历
 
+```cpp
+void helper(TreeNode* root, vector<int>& res) {  // res 是结果
+    // 递归终止条件
+    if (!root) {
+        return;
+    }
+
+    // 这里根据遍历的顺序来进行调整，即可实现三种遍历
+    res.push_back(root->val);
+    helper(root->left, res);
+    helper(root->right, res);
+}
+```
+
+迭代遍历：
+
+```cpp
+stack<TreeNode*> s;
+s.push(x);  // 初始化栈
+while (!s.empty()) {  // 栈非空就继续遍历
+    TreeNode* cur = s.top();
+    s.pop();
+    // do something
+    
+    s.push(x);  // 填充栈
+}
+```
+
 1. 前序遍历（递归法，迭代法）中左右
 2. 中序遍历（递归法，迭代法）左中右
 3. 后序遍历（递归法，迭代法）左右中
