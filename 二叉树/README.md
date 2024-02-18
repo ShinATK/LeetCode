@@ -14,7 +14,7 @@
 ### 深度优先遍历
 
 ```cpp
-void helper(TreeNode* root, vector<int>& res) {  // res 是结果
+void DepthSearch(TreeNode* root, vector<int>& res) {  // res 是结果
     // 递归终止条件
     if (!root) {
         return;
@@ -22,8 +22,8 @@ void helper(TreeNode* root, vector<int>& res) {  // res 是结果
 
     // 这里根据遍历的顺序来进行调整，即可实现三种遍历
     res.push_back(root->val);
-    helper(root->left, res);
-    helper(root->right, res);
+    DepthSearch(root->left, res);
+    DepthSearch(root->right, res);
 }
 ```
 
