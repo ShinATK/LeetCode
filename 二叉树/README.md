@@ -59,6 +59,12 @@ struct TreeNode {
 - 深度优先：优先访问子节点
 - 广度优先：优先访问同级结点
 
+> 一种神级遍历二叉树的方式：morris 遍历
+> 参考链接：
+> [Morris 遍历](https://ghh3809.github.io/2018/08/06/morris-traversal/#morris%E9%81%8D%E5%8E%86)
+> [神级遍历——morris](https://zhuanlan.zhihu.com/p/101321696)
+
+
 ### 深度优先遍历
 
 深度优先分为三种：（以根节点访问位次区分）
@@ -87,7 +93,9 @@ void DepthSearch(TreeNode* root, vector<int>& res) {  // res 是结果
 
 #### 迭代实现
 
-和递归本质上相同，都是借助栈实现
+和递归本质上相同，都是借助栈实现。核心思想：利用栈记录每一个结点及其左右节点的处理顺序。
+
+例如前序遍历，用父节点初始化栈再弹出处理，并将左右节点按顺序入栈，再依次弹出处理
 
 对于前序遍历，顺序为：中左右。
 
@@ -124,6 +132,7 @@ void PostOrder(TreeNode* root, vector<int>& ret) {
         if(cur->left) st.push(cur->left);
         if(cur->right) st.push(cur->right);
     }
+    reverse(ret.begin(), ret.end());
 }
 ```
 
@@ -186,6 +195,10 @@ void LayerSearch(TreeNode* root) {
 - 性质 2：深度为 `k` 的二叉树至多有 `2{k}-1` 个节点`（k>=1）`。
 - 性质 3：包含 `n` 个节点的二叉树的高度至少为 `log2 (n+1)`。
 - 性质 4：在任意一颗二叉树中，若终端节点的个数为 `n0`，度为 `2` 的节点数为 `n2`，则 `n0=n2+1`
+
+**高度**和**深度**
+- 深度：根节点到任意一个结点，从上往下数，用前序遍历
+- 高度：根节点到叶子结点（根节点最大），从下往上数，用后序遍历
 
 
 ## 二叉树的修改与构造
